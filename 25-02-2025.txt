@@ -1,0 +1,264 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Tue Feb 25 14:11:49 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> conn b001
+Enter password:
+Connected.
+SQL> SHOW TABLES;
+SP2-0158: unknown SHOW option "TABLES"
+SQL> SELECT * FROM B001;
+SELECT * FROM B001
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> SELECT * FROM SYS.TABLES;
+SELECT * FROM SYS.TABLES
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> SELECT * FROM CLIENT_MASTER_INFO;
+
+CLIENT_NO  NAME                 CITY               PINCODE STATE
+---------- -------------------- --------------- ---------- --------------------
+   BAL_DUE
+----------
+C00001     IVAN BAYROSS         MUMBAI              400054 MAHARASHTRA
+     15000
+
+C00002     MAMTA MAZUMDAR       MADRAS              780001 TAMIL NADU
+         0
+
+C00003     CHHAYA BANKAR        MUMBAI              400057 MAHARASHTRA
+      5000
+
+
+CLIENT_NO  NAME                 CITY               PINCODE STATE
+---------- -------------------- --------------- ---------- --------------------
+   BAL_DUE
+----------
+C00004     ASHWINI JOSHI        BANGALORE           560001 KARNATAKA
+         0
+
+C00005     HANSEL COLACO        MUMBAI              400060 MAHARASHTRA
+      2000
+
+C00006     DEEPAK SHARMA        MANGALORE           560050 KARNATAKA
+         0
+
+
+6 rows selected.
+
+SQL> SET LINE 500;
+SQL> SELECT * FROM CLIENT_MASTER_INFO;
+
+CLIENT_NO  NAME                 CITY               PINCODE STATE                   BAL_DUE
+---------- -------------------- --------------- ---------- -------------------- ----------
+C00001     IVAN BAYROSS         MUMBAI              400054 MAHARASHTRA               15000
+C00002     MAMTA MAZUMDAR       MADRAS              780001 TAMIL NADU                    0
+C00003     CHHAYA BANKAR        MUMBAI              400057 MAHARASHTRA                5000
+C00004     ASHWINI JOSHI        BANGALORE           560001 KARNATAKA                     0
+C00005     HANSEL COLACO        MUMBAI              400060 MAHARASHTRA                2000
+C00006     DEEPAK SHARMA        MANGALORE           560050 KARNATAKA                     0
+
+6 rows selected.
+
+SQL> SELECT * FROM CLIENT_MASTER_INFO WHERE NAME LIKE 'A%';
+
+CLIENT_NO  NAME                 CITY               PINCODE STATE                   BAL_DUE
+---------- -------------------- --------------- ---------- -------------------- ----------
+C00004     ASHWINI JOSHI        BANGALORE           560001 KARNATAKA                     0
+
+SQL> SELECT * FROM CLIENT_MASTER_INFO WHERE CITY LIKE 'M%';
+
+CLIENT_NO  NAME                 CITY               PINCODE STATE                   BAL_DUE
+---------- -------------------- --------------- ---------- -------------------- ----------
+C00001     IVAN BAYROSS         MUMBAI              400054 MAHARASHTRA               15000
+C00002     MAMTA MAZUMDAR       MADRAS              780001 TAMIL NADU                    0
+C00003     CHHAYA BANKAR        MUMBAI              400057 MAHARASHTRA                5000
+C00005     HANSEL COLACO        MUMBAI              400060 MAHARASHTRA                2000
+C00006     DEEPAK SHARMA        MANGALORE           560050 KARNATAKA                     0
+
+SQL> SELECT * FROM CLIENT_MASTER_INFO WHERE STATE LIKE 'M%';
+
+CLIENT_NO  NAME                 CITY               PINCODE STATE                   BAL_DUE
+---------- -------------------- --------------- ---------- -------------------- ----------
+C00001     IVAN BAYROSS         MUMBAI              400054 MAHARASHTRA               15000
+C00003     CHHAYA BANKAR        MUMBAI              400057 MAHARASHTRA                5000
+C00005     HANSEL COLACO        MUMBAI              400060 MAHARASHTRA                2000
+
+SQL> CREATE TABLE STUDENT_INFO_2 (ROLL VARCHAR(10), NAME VARCHAR(30), ADDRESS VARCHAR(40), DOB DATE, SUBJECT VARCHAR(30));
+
+Table created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S01','ARKO DEY','CONTAI','2004-JAN-1','ENGLISH');
+INSERT INTO STUDENT_INFO_2 VALUES('S01','ARKO DEY','CONTAI','2004-JAN-1','ENGLISH')
+                                                            *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S01','ARKO DEY','CONTAI','1-JAN-2004','ENGLISH');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S02','ARIYA BANARJEE','FARIDPUR','2-JAN-2004','BENGALI');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S03','ANJALI RANAWAT','ALADARPUT','3-JAN-2004','HISTORY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S04','ANUPAM DHARA','SANTRAGACHI','4-JAN-2004','CHEMESTRY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S05','SANTANU KOLE','HOWRAH','5-JAN-2004','BIOLOGY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S06','ANI MAHATO','KOLKATA','6-JAN-2004','PSYCHOLOGY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S07','RAJ VERMA','CANADA','6-JAN-2004','PHILOSOPHY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S08','NAMAN MATHUR','MUMBAI','8-JAN-2004','GEOGRAPHY');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S09','IVY RANJIT','NANDIPARA','9-JAN-2004','ENVIRONMENTAL STUDIES');
+
+1 row created.
+
+SQL> INSERT INTO STUDENT_INFO_2 VALUES('S10','KULRAJ SHING','GUJRAT','10-JAN-2004','NUTRITION');
+
+1 row created.
+
+SQL> SELECT * FROM STUDENT_TABLE_2;
+SELECT * FROM STUDENT_TABLE_2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> SELECT * FROM STUDENT_INFO_2;
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S01        ARKO DEY                       CONTAI                                   01-JAN-04 ENGLISH
+S02        ARIYA BANARJEE                 FARIDPUR                                 02-JAN-04 BENGALI
+S03        ANJALI RANAWAT                 ALADARPUT                                03-JAN-04 HISTORY
+S04        ANUPAM DHARA                   SANTRAGACHI                              04-JAN-04 CHEMESTRY
+S05        SANTANU KOLE                   HOWRAH                                   05-JAN-04 BIOLOGY
+S06        ANI MAHATO                     KOLKATA                                  06-JAN-04 PSYCHOLOGY
+S07        RAJ VERMA                      CANADA                                   06-JAN-04 PHILOSOPHY
+S08        NAMAN MATHUR                   MUMBAI                                   08-JAN-04 GEOGRAPHY
+S09        IVY RANJIT                     NANDIPARA                                09-JAN-04 ENVIRONMENTAL STUDIES
+S10        KULRAJ SHING                   GUJRAT                                   10-JAN-04 NUTRITION
+
+10 rows selected.
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME 'A%';
+SELECT * FROM STUDENT_INFO_2 WHERE NAME 'A%'
+                                        *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A%';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S01        ARKO DEY                       CONTAI                                   01-JAN-04 ENGLISH
+S02        ARIYA BANARJEE                 FARIDPUR                                 02-JAN-04 BENGALI
+S03        ANJALI RANAWAT                 ALADARPUT                                03-JAN-04 HISTORY
+S04        ANUPAM DHARA                   SANTRAGACHI                              04-JAN-04 CHEMESTRY
+S06        ANI MAHATO                     KOLKATA                                  06-JAN-04 PSYCHOLOGY
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE '%A%';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S01        ARKO DEY                       CONTAI                                   01-JAN-04 ENGLISH
+S02        ARIYA BANARJEE                 FARIDPUR                                 02-JAN-04 BENGALI
+S03        ANJALI RANAWAT                 ALADARPUT                                03-JAN-04 HISTORY
+S04        ANUPAM DHARA                   SANTRAGACHI                              04-JAN-04 CHEMESTRY
+S05        SANTANU KOLE                   HOWRAH                                   05-JAN-04 BIOLOGY
+S06        ANI MAHATO                     KOLKATA                                  06-JAN-04 PSYCHOLOGY
+S07        RAJ VERMA                      CANADA                                   06-JAN-04 PHILOSOPHY
+S08        NAMAN MATHUR                   MUMBAI                                   08-JAN-04 GEOGRAPHY
+S09        IVY RANJIT                     NANDIPARA                                09-JAN-04 ENVIRONMENTAL STUDIES
+S10        KULRAJ SHING                   GUJRAT                                   10-JAN-04 NUTRITION
+
+10 rows selected.
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE '_A%';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S05        SANTANU KOLE                   HOWRAH                                   05-JAN-04 BIOLOGY
+S07        RAJ VERMA                      CANADA                                   06-JAN-04 PHILOSOPHY
+S08        NAMAN MATHUR                   MUMBAI                                   08-JAN-04 GEOGRAPHY
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE '%A';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S04        ANUPAM DHARA                   SANTRAGACHI                              04-JAN-04 CHEMESTRY
+S07        RAJ VERMA                      CANADA                                   06-JAN-04 PHILOSOPHY
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A__';
+
+no rows selected
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A_';
+
+no rows selected
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A__%';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S01        ARKO DEY                       CONTAI                                   01-JAN-04 ENGLISH
+S02        ARIYA BANARJEE                 FARIDPUR                                 02-JAN-04 BENGALI
+S03        ANJALI RANAWAT                 ALADARPUT                                03-JAN-04 HISTORY
+S04        ANUPAM DHARA                   SANTRAGACHI                              04-JAN-04 CHEMESTRY
+S06        ANI MAHATO                     KOLKATA                                  06-JAN-04 PSYCHOLOGY
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A___%';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S01        ARKO DEY                       CONTAI                                   01-JAN-04 ENGLISH
+S02        ARIYA BANARJEE                 FARIDPUR                                 02-JAN-04 BENGALI
+S03        ANJALI RANAWAT                 ALADARPUT                                03-JAN-04 HISTORY
+S04        ANUPAM DHARA                   SANTRAGACHI                              04-JAN-04 CHEMESTRY
+S06        ANI MAHATO                     KOLKATA                                  06-JAN-04 PSYCHOLOGY
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A%' AND '%O;
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> SELECT * FROM STUDENT_INFO_2 WHERE NAME LIKE 'A%O';
+
+ROLL       NAME                           ADDRESS                                  DOB       SUBJECT
+---------- ------------------------------ ---------------------------------------- --------- ------------------------------
+S06        ANI MAHATO                     KOLKATA                                  06-JAN-04 PSYCHOLOGY
+
+SQL> SELECT NAME FROM STUDENT_INFO_2 WHERE NAME LIKE 'A%O';
+
+NAME
+------------------------------
+ANI MAHATO
+
+SQL>
